@@ -3,7 +3,11 @@ require_once __DIR__ . '/Models/Category.php';
 require_once __DIR__ . '/Models/Food.php';
 require_once __DIR__ . '/Models/Toy.php';
 require_once __DIR__ . '/Models/Accessory.php';
+
+$Royal_Canin_Mini_Adult = new Food('fakeimg.jpg', 'Royal Canin Mini Adult', 43.99, 545, ['prosciutto', 'riso']);
+var_dump($Royal_Canin_Mini_Adult);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
