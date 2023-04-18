@@ -1,21 +1,7 @@
 <?php
-require_once __DIR__ . '/Models/Category.php';
-require_once __DIR__ . '/Models/Food.php';
-require_once __DIR__ . '/Models/Toy.php';
-require_once __DIR__ . '/Models/Accessory.php';
+require_once __DIR__ . '/db.php';
 
-//category
-$category_dog = new Category('cane', '<i class="fa-solid fa-dog"></i>');
-$category_cat = new Category('gatto', '<i class="fa-solid fa-cat"></i>');
-$category_fish = new Category('pesce', '<i class="fa-solid fa-fish"></i>');
-$category_bird = new Category('uccello', '<i class="fa-solid fa-bird"></i>');
-
-//product
-$Royal_Canin_Mini_Adult = new Product('fakeimg.jpg', 'Royal Canin Mini Adult', 43.99, $category_dog);
-
-var_dump($Royal_Canin_Mini_Adult);
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,15 +20,31 @@ var_dump($Royal_Canin_Mini_Adult);
 <body>
     <h1 class="text-center p-3">Boolshop</h1>
     <div class="container">
-        <div class="row">
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title"><?php echo $Royal_Canin_Mini_Adult->getName() ?> </h5>
-                    <h6 class="card-subtitle mb-2 text-body-secondary"><?php  ?></h6>
-                    <p class="card-text">Prezzo: <?php echo $Royal_Canin_Mini_Adult->getPrice() ?> €</p>
+        <div class="row g-3">
+            <?php foreach ($products as $product) : ?>
+                <div class="col-3">
+                    <div class="card h-100" style="width: 18rem;">
+                        <img src="<?php echo $product->getImage() ?>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $product->getName() ?> </h5>
+                            <h6 class="card-subtitle mb-2 text-body-secondary"><?php echo $product->getCategory()->getIcon() ?> <?php echo $product->getCategory()->getName() ?></h6>
+                            <p class="card-text">Prezzo: <?php echo $product->getPrice() ?> €</p>
+                            <?php if (method_exists($product, 'getWeight')) : ?>
+                                <p class="card-text">Peso netto: <?php echo $product->getWeight() ?>g</p>
+                            <?php endif; ?>
+                            <?php if (method_exists($product, 'getIngredients')) : ?>
+                                <p class="card-text">Ingredienti: <?php echo $product->getIngredients() ?></p>
+                            <?php endif; ?>
+                            <?php if (method_exists($product, 'getDimensions')) : ?>
+                                <p class="card-text"> Dimensioni: <?php echo $product->getDimensions() ?> cm </p>
+                            <?php endif; ?>
+                            <?php if (method_exists($product, 'getCharacteristics')) : ?>
+                                <p class="card-text"> Caratteristiche: <?php echo $product->getCharacteristics() ?> cm </p>
+                            <?php endif; ?>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
 

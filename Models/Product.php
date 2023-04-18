@@ -1,5 +1,14 @@
 <?php
 require_once __DIR__ . '/Category.php';
+
+/**
+ * Product
+ * 
+ * define the basic product class
+ * 
+ * @author Brivio Luca
+ * 
+ */
 class Product
 {
     private $image;
@@ -7,7 +16,17 @@ class Product
     private $price;
     private $category;
 
-    public function  __construct($_image,  $_name, $_price, $_category)
+    /**
+     * Method __construct
+     *
+     * @param string $_image [explicite description]
+     * @param string $_name [explicite description]
+     * @param float $_price [explicite description]
+     * @param Category $_category [explicite description]
+     *
+     * @return void
+     */
+    public function __construct($_image,  $_name, $_price, $_category)
     {
         $this->image = $_image;
         $this->name = $_name;
