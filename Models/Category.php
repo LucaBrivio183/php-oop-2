@@ -1,25 +1,24 @@
 <?php
-
+require_once __DIR__ . '/Traits/name.php';
 class Category
 {
-    private $name;
+    use Name;
     private $icon;
 
-    public function __construct(string $_name, string $_icon)
+    /**
+     * Method __construct
+     *
+     * @param string $_name [explicite description]
+     * @param string $_icon [explicite description]
+     *
+     * @return void
+     */
+    public function __construct($_name, $_icon)
     {
         $this->name = $_name;
         $this->icon = $_icon;
     }
-    //getter name
-    public function getName()
-    {
-        return $this->name;
-    }
-    //setter name
-    public function setName($_name)
-    {
-        $this->name = $_name;
-    }
+
     //getter icon
     public function getIcon()
     {

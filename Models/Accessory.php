@@ -1,11 +1,24 @@
 <?php
 
 require_once __DIR__ . '/Product.php';
+require_once __DIR__ . '/Traits/Dimensions.php';
 class Accessory extends Product
 {
+    use Dimensions;
     private $material;
-    private $dimensions;
 
+    /**
+     * Method __construct
+     *
+     * @param string $_image [explicite description]
+     * @param string $_name [explicite description]
+     * @param float $_price [explicite description]
+     * @param Category $_category [explicite description]
+     * @param string $_material [explicite description]
+     * @param string $_dimensions [explicite description]
+     *
+     * @return void
+     */
     public function __construct($_image, $_name, $_price, $_category, $_material, $_dimensions)
     {
         parent::__construct($_image, $_name, $_price, $_category);
@@ -21,15 +34,5 @@ class Accessory extends Product
     public function setMaterial($_material)
     {
         $this->material = $_material;
-    }
-    //getter dimensions
-    public function getDimensions()
-    {
-        return $this->dimensions;
-    }
-    //setter dimensions
-    public function setDimensions($_dimensions)
-    {
-        $this->dimensions = $_dimensions;
     }
 }
